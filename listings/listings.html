@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Property Listings - Dubai</title>
+    <link rel="stylesheet" href="../common.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 60px 40px;
+}
+
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: 500;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    margin-bottom: 50px;
+}
+
+.back-button:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: white;
+    transform: translateX(-3px);
+}
+
+header {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.header-badge {
+    display: inline-block;
+    padding: 8px 20px;
+    background: rgba(120, 119, 198, 0.1);
+    border: 1px solid rgba(120, 119, 198, 0.2);
+    border-radius: 50px;
+    color: #7877c6;
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    letter-spacing: 1.5px;
+}
+
+h1 {
+    font-size: 56px;
+    font-weight: 800;
+    color: white;
+    margin-bottom: 20px;
+    letter-spacing: -1px;
+}
+
+.subtitle {
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.properties-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 30px;
+}
+
+.property-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    cursor: pointer;
+}
+
+.property-card:hover {
+    transform: translateY(-8px);
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(120, 119, 198, 0.3);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
+.property-image {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    background: linear-gradient(135deg, rgba(120, 119, 198, 0.2), rgba(74, 58, 255, 0.2));
+}
+
+.property-details {
+    padding: 30px;
+}
+
+.property-type {
+    display: inline-block;
+    padding: 6px 14px;
+    background: rgba(45, 212, 191, 0.1);
+    border: 1px solid rgba(45, 212, 191, 0.3);
+    border-radius: 20px;
+    color: #2dd4bf;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.property-price {
+    font-size: 32px;
+    font-weight: 800;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.property-address {
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.property-location {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.property-features {
+    display: flex;
+    gap: 25px;
+    margin-bottom: 25px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.feature {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.property-description {
+    color: rgba(255, 255, 255, 0.5);
+    line-height: 1.7;
+    margin-bottom: 25px;
+    font-size: 15px;
+}
+
+.view-button {
+    display: block;
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, #7877c6 0%, #4a3aff 100%);
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 15px;
+    transition: all 0.3s ease;
+}
+
+.view-button:hover {
+    transform: scale(1.02);
+    box-shadow: 0 10px 30px rgba(120, 119, 198, 0.4);
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 36px;
+    }
+    .properties-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+</head>
+<body>
+    <div class="container">
+        <a href="../index.html" class="back-button">← Back to Home</a>
+        <header>
+            <div class="header-badge">AVAILABLE NOW</div>
+            <h1>Luxury Properties in Dubai</h1>
+            <p class="subtitle">Discover your dream home from our exclusive collection</p>
+        </header>
+        <div class="properties-grid" id="propertiesGrid"></div>
+    </div>
+    <script>
+const properties = [{"price": 1250000, "address": "Marina Promenade - Marina Diamond Tower 2", "location": "Dubai Marina", "beds": 2, "baths": 2, "sqft": 1100, "description": "Stunning 2BR apartment with full marina views and premium finishes. Spacious layout with modern kitchen and floor-to-ceiling windows.", "type": "Apartment", "image": "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=1200"}, {"price": 2850000, "address": "Burj Khalifa District - The Address Downtown", "location": "Downtown Dubai", "beds": 3, "baths": 3, "sqft": 2400, "description": "Luxury 3BR apartment with iconic Burj Khalifa views. Premium finishes throughout with marble flooring and smart home features.", "type": "Apartment", "image": "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1200"}, {"price": 980000, "address": "Jumeirah Village Circle - District 13", "location": "Jumeirah Village Circle", "beds": 2, "baths": 2, "sqft": 1300, "description": "Modern 2BR townhouse in gated community with landscaped gardens. Perfect for families seeking quiet living with city access.", "type": "Townhouse", "image": "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1200"}, {"price": 3650000, "address": "Palm Jumeirah - Garden Homes Frond M", "location": "Palm Jumeirah", "beds": 4, "baths": 5, "sqft": 3800, "description": "Exclusive 4BR beachfront villa on the Palm with private pool. Direct beach access and stunning Arabian Gulf views.", "type": "Villa", "image": "https://images.unsplash.com/photo-1613977257363-707ba9348227?w=1200"}, {"price": 1920000, "address": "Business Bay - Executive Towers Boulevard", "location": "Business Bay", "beds": 2, "baths": 3, "sqft": 1650, "description": "Premium 2BR apartment in Business Bay with Burj Khalifa and Dubai Canal views. Prime location near Dubai Mall.", "type": "Apartment", "image": "https://images.unsplash.com/photo-1567496898669-ee935f5f647a?w=1200"}, {"price": 4350000, "address": "Emirates Hills - Sector E Villa District", "location": "Emirates Hills", "beds": 5, "baths": 6, "sqft": 6500, "description": "Palatial 5BR villa in Dubai&#x27;s most exclusive community. Mediterranean architecture with private pool and landscaped garden.", "type": "Villa", "image": "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200"}];
+
+function formatPrice(price) {
+    return new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+        minimumFractionDigits: 0
+    }).format(price);
+}
+
+function renderProperties() {
+    const grid = document.getElementById('propertiesGrid');
+    properties.forEach((property, index) => {
+        const card = document.createElement('div');
+        card.className = 'property-card';
+        card.style.animationDelay = `${index * 0.1}s`;
+
+        const imageHtml = property.image 
+            ? `<img src="${property.image}" alt="${property.address}" class="property-image">`
+            : `<div class="property-image" style="display: flex; align-items: center; justify-content: center; font-size: 80px;">🏠</div>`;
+
+        card.innerHTML = `
+            ${imageHtml}
+            <div class="property-details">
+                <div class="property-type">${property.type || 'Residential'}</div>
+                <div class="property-price">${formatPrice(property.price)}</div>
+                <div class="property-address">${property.address}</div>
+                <div class="property-location">📍 ${property.location || 'Dubai'}</div>
+                <div class="property-features">
+                    <span class="feature">🛏️ ${property.beds} beds</span>
+                    <span class="feature">🛁 ${property.baths} baths</span>
+                    <span class="feature">📐 ${property.sqft.toLocaleString()} sqft</span>
+                </div>
+                <div class="property-description">${property.description}</div>
+                <a href="../property_detail/property_${index + 1}.html" class="view-button">View Full Details →</a>
+            </div>
+        `;
+        grid.appendChild(card);
+    });
+}
+
+renderProperties();
+</script>
+</body>
+</html>

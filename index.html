@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dubai Real Estate - Premium Properties</title>
+    <link rel="stylesheet" href="common.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* Navigation Bar */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 14, 39, 0.9);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(120, 119, 198, 0.1);
+            padding: 20px 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #7877c6 0%, #4a3aff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+        }
+
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            font-size: 15px;
+        }
+
+        .nav-links a:hover {
+            color: #7877c6;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 40px 80px;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            text-align: center;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 10px 24px;
+            background: rgba(120, 119, 198, 0.1);
+            border: 1px solid rgba(120, 119, 198, 0.2);
+            border-radius: 50px;
+            color: #7877c6;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+        }
+
+        .hero-title {
+            font-size: 80px;
+            font-weight: 900;
+            color: #ffffff;
+            margin-bottom: 30px;
+            line-height: 1.1;
+            letter-spacing: -2px;
+        }
+
+        .hero-title .gradient-text {
+            background: linear-gradient(135deg, #7877c6 0%, #4a3aff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 22px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 50px;
+            font-weight: 400;
+            line-height: 1.6;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            padding: 18px 40px;
+            background: linear-gradient(135deg, #7877c6 0%, #4a3aff 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(120, 119, 198, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(120, 119, 198, 0.4);
+        }
+
+        .btn-secondary {
+            padding: 18px 40px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Stats Section */
+        .stats-section {
+            padding: 100px 40px;
+            background: rgba(120, 119, 198, 0.03);
+            border-top: 1px solid rgba(120, 119, 198, 0.1);
+            border-bottom: 1px solid rgba(120, 119, 198, 0.1);
+        }
+
+        .stats-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 60px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 56px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #7877c6 0%, #4a3aff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 500;
+        }
+
+        /* Features Section */
+        .features-section {
+            padding: 120px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-subtitle {
+            color: #7877c6;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .section-title {
+            font-size: 48px;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        .section-description {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.6);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 50px 40px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #7877c6, #4a3aff);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .feature-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(120, 119, 198, 0.3);
+            transform: translateY(-5px);
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, rgba(120, 119, 198, 0.2), rgba(74, 58, 255, 0.2));
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin-bottom: 25px;
+        }
+
+        .feature-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        .feature-description {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.7;
+            margin-bottom: 25px;
+        }
+
+        .feature-link {
+            color: #7877c6;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: gap 0.3s ease;
+        }
+
+        .feature-link:hover {
+            gap: 12px;
+        }
+
+        /* Footer */
+        footer {
+            padding: 60px 40px 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            text-align: center;
+        }
+
+        .footer-text {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 14px;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 42px;
+            }
+            .hero-subtitle {
+                font-size: 18px;
+            }
+            .section-title {
+                font-size: 32px;
+            }
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo">Dubai Estates</div>
+            <div class="nav-links">
+                <a href="#properties">Properties</a>
+                <a href="compare/compare.html">Compare</a>
+                <a href="calculator/calculator.html">Calculator</a>
+                <a href="inquiry/inquiry.html">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-section">
+        <div class="hero-content">
+            <div class="hero-badge">LUXURY REAL ESTATE</div>
+            <h1 class="hero-title">
+                Discover Premium Properties in<br>
+                <span class="gradient-text">Dubai</span>
+            </h1>
+            <p class="hero-subtitle">
+                Exclusive collection of luxury apartments, villas, and penthouses in Dubai's most prestigious locations. 
+                From Marina views to Palm Jumeirah beachfront.
+            </p>
+            <div class="cta-buttons">
+                <a href="listings/listings.html" class="btn-primary">Browse Properties →</a>
+                <a href="compare/compare.html" class="btn-secondary">Compare Properties</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats-section">
+        <div class="stats-container">
+            <div class="stat-item">
+                <div class="stat-number">6</div>
+                <div class="stat-label">Luxury Properties</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">$50M+</div>
+                <div class="stat-label">Properties Sold</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">98%</div>
+                <div class="stat-label">Client Satisfaction</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">15+</div>
+                <div class="stat-label">Years Experience</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features-section" id="properties">
+        <div class="section-header">
+            <div class="section-subtitle">PREMIUM SERVICES</div>
+            <h2 class="section-title">Your Complete Real Estate Solution</h2>
+            <p class="section-description">
+                From property discovery to investment analysis, we provide everything you need 
+                to make informed real estate decisions in Dubai's luxury market.
+            </p>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🏙️</div>
+                <h3 class="feature-title">Premium Listings</h3>
+                <p class="feature-description">
+                    Browse 6 hand-picked luxury properties with detailed information, 
+                    high-quality images, and comprehensive location analysis.
+                </p>
+                <a href="listings/listings.html" class="feature-link">
+                    View All Properties →
+                </a>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🔍</div>
+                <h3 class="feature-title">Property Comparison</h3>
+                <p class="feature-description">
+                    Advanced side-by-side comparison with price analysis, 
+                    best value indicators, and detailed metrics to help you decide.
+                </p>
+                <a href="compare/compare.html" class="feature-link">
+                    Compare Now →
+                </a>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3 class="feature-title">Investment Calculator</h3>
+                <p class="feature-description">
+                    Calculate potential ROI, rental yield, and appreciation with our advanced 
+                    investment analysis tool powered by real Dubai market data.
+                </p>
+                <a href="calculator/calculator.html" class="feature-link">
+                    Calculate ROI →
+                </a>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">💼</div>
+                <h3 class="feature-title">Expert Consultation</h3>
+                <p class="feature-description">
+                    Connect with our experienced Dubai property consultants for personalized guidance, 
+                    market insights, and professional support.
+                </p>
+                <a href="inquiry/inquiry.html" class="feature-link">
+                    Get in Touch →
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p class="footer-text">© 2026 Dubai Estates. All rights reserved.</p>
+    </footer>
+</body>
+</html>

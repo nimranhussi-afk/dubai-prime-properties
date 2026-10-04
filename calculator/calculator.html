@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROI Calculator - Dubai</title>
+    <link rel="stylesheet" href="../common.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+.container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 60px 40px;
+}
+
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: 500;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    margin-bottom: 40px;
+}
+
+.back-button:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: white;
+    transform: translateX(-3px);
+}
+
+.calculator-container {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    padding: 60px;
+}
+
+.calculator-badge {
+    display: inline-block;
+    padding: 8px 20px;
+    background: rgba(120, 119, 198, 0.1);
+    border: 1px solid rgba(120, 119, 198, 0.2);
+    border-radius: 50px;
+    color: #7877c6;
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    letter-spacing: 1.5px;
+}
+
+h1 {
+    font-size: 48px;
+    font-weight: 800;
+    color: white;
+    margin-bottom: 20px;
+    letter-spacing: -1px;
+}
+
+.subtitle {
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 50px;
+}
+
+.calculator-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+}
+
+h3 {
+    font-size: 24px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+label {
+    display: block;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 600;
+    margin-bottom: 12px;
+    font-size: 14px;
+}
+
+input {
+    width: 100%;
+    padding: 16px 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    color: white;
+    font-size: 16px;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.3s ease;
+}
+
+input:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(120, 119, 198, 0.5);
+}
+
+.calculate-button {
+    width: 100%;
+    padding: 20px;
+    background: linear-gradient(135deg, #7877c6 0%, #4a3aff 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+.calculate-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 40px rgba(120, 119, 198, 0.4);
+}
+
+.result-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 25px;
+    border-radius: 16px;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+}
+
+.result-card:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(120, 119, 198, 0.2);
+}
+
+.result-card.highlight {
+    background: linear-gradient(135deg, rgba(120, 119, 198, 0.15), rgba(74, 58, 255, 0.15));
+    border-color: rgba(120, 119, 198, 0.3);
+}
+
+.result-label {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.result-value {
+    color: white;
+    font-size: 36px;
+    font-weight: 800;
+}
+
+@media (max-width: 968px) {
+    .calculator-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .calculator-container {
+        padding: 40px 30px;
+    }
+    h1 {
+        font-size: 32px;
+    }
+}
+</style>
+</head>
+<body>
+    <div class="container">
+        <a href="../index.html" class="back-button">← Back to Home</a>
+        <div class="calculator-container">
+            <div class="calculator-badge">INVESTMENT ANALYSIS</div>
+            <h1>Dubai Property ROI Calculator</h1>
+            <p class="subtitle">Calculate your potential return on investment with our advanced Dubai market analytics tool</p>
+
+            <div class="calculator-grid">
+                <div class="input-section">
+                    <h3>Property Details</h3>
+                    <div class="form-group">
+                        <label>Property Price (USD)</label>
+                        <input type="number" id="propertyPrice" placeholder="1000000" value="1000000">
+                    </div>
+                    <div class="form-group">
+                        <label>Down Payment (%)</label>
+                        <input type="number" id="downPayment" placeholder="20" value="20">
+                    </div>
+                    <div class="form-group">
+                        <label>Monthly Rental Income (USD)</label>
+                        <input type="number" id="monthlyRent" placeholder="5000" value="5000">
+                    </div>
+                    <div class="form-group">
+                        <label>Annual Expenses (USD)</label>
+                        <input type="number" id="expenses" placeholder="10000" value="10000">
+                    </div>
+                    <div class="form-group">
+                        <label>Expected Appreciation (%)</label>
+                        <input type="number" id="appreciation" placeholder="5" value="5">
+                    </div>
+                    <button onclick="calculateROI()" class="calculate-button">Calculate ROI →</button>
+                </div>
+
+                <div class="results-section" id="resultsSection">
+                    <h3>Investment Analysis</h3>
+                    <div class="result-card">
+                        <div class="result-label">Initial Investment</div>
+                        <div class="result-value" id="initialInvestment">$0</div>
+                    </div>
+                    <div class="result-card">
+                        <div class="result-label">Annual Cash Flow</div>
+                        <div class="result-value" id="cashFlow">$0</div>
+                    </div>
+                    <div class="result-card highlight">
+                        <div class="result-label">Annual ROI</div>
+                        <div class="result-value" id="roi">0%</div>
+                    </div>
+                    <div class="result-card">
+                        <div class="result-label">5-Year Property Value</div>
+                        <div class="result-value" id="futureValue">$0</div>
+                    </div>
+                    <div class="result-card">
+                        <div class="result-label">Rental Yield</div>
+                        <div class="result-value" id="rentalYield">0%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+function formatCurrency(amount) {
+    return new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+        minimumFractionDigits: 0
+    }).format(amount);
+}
+
+function calculateROI() {
+    const price = parseFloat(document.getElementById('propertyPrice').value);
+    const downPaymentPct = parseFloat(document.getElementById('downPayment').value);
+    const monthlyRent = parseFloat(document.getElementById('monthlyRent').value);
+    const expenses = parseFloat(document.getElementById('expenses').value);
+    const appreciationPct = parseFloat(document.getElementById('appreciation').value);
+
+    const initialInvestment = price * (downPaymentPct / 100);
+    const annualRent = monthlyRent * 12;
+    const cashFlow = annualRent - expenses;
+    const roi = (cashFlow / initialInvestment) * 100;
+    const futureValue = price * Math.pow(1 + (appreciationPct / 100), 5);
+    const rentalYield = (annualRent / price) * 100;
+
+    document.getElementById('initialInvestment').textContent = formatCurrency(initialInvestment);
+    document.getElementById('cashFlow').textContent = formatCurrency(cashFlow);
+    document.getElementById('roi').textContent = roi.toFixed(2) + '%';
+    document.getElementById('futureValue').textContent = formatCurrency(futureValue);
+    document.getElementById('rentalYield').textContent = rentalYield.toFixed(2) + '%';
+}
+
+calculateROI();
+</script>
+</body>
+</html>
